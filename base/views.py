@@ -1,36 +1,41 @@
-from django.shortcuts import render
-from .models import Event
+from django.db.models import Q
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+#from .models import Event, EventResponse, Message, Type_event
+from django.views.generic import ListView
+
+from .models import *
 from .forms import SearchForm
 from django.shortcuts import render, get_object_or_404
 from .recommender import Recommender
 # Create your views here.
+
+class ListOfEvents(ListView):
+    template_name = 'base/events.html'
+    model = Event
+
+def event_detail(request, pk):
+    event = Event.objects.get(id=pk)
+    messages = event.message_set.all()
+    # POST
+    if request.method == 'POST':
+        Message.objects.create(
+            user=request.user,
+            event=event,
+            message=request.POST.get('message')
+        )
+        return redirect('room', pk=event.id)
+    # GET
+    context = {'event': event}
+    return render(request, 'base/one_event.html', context)
+
+
 def event_search(request):
-    form = SearchForm()
-    query = None
-    results = []
-    if 'query' in request.GET:
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = Event.published.annotate(
-                similarity=TrigramSimilarity('title', query),
-            ).filter(similarity__gt=0.1).order_by('-similarity')
-    return render(request,
-                  'event/search.html',
-                  {'form': form,
-                   'query': query,
-                   'results': results})
-
-def event_detail(request, id, slug):
-    event = get_object_or_404(Event,
-                                translations__slug=slug,
-                                available=True)
-    #cart_product_form = CartAddProductForm()
-    r = Recommender(event)
-    recommended_events = r.suggest_products_for([event], 4)
-
-    return render(request,
-                  'events/event.html',
-                  {'event': event,
-                   'cart_product_form': event_form,
-                   'recommended_event': recommended_events})
+    q = request.GET.get('q', '')
+    if q == "":
+        return HttpResponse("empty q")
+    events = Event.objects.filter(
+        Q(description__contains=q) |
+        Q(name__contains=q))
+    context = {'q': q, 'events': events}
+    return render(request, "base/search.html", context)
