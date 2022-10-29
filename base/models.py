@@ -20,12 +20,12 @@ class Event(models.Model):
     objects = None
     name = models.CharField(max_length=200)
     active = models.BooleanField()
-    type_event = models.ForeignKey(Type_event)
+    type_event = models.ForeignKey(Type_event, on_delete = models.PROTECT)
     description = models.TextField(null=True, blank=True)
     place = models.TextField(null=True, blank=True)
-    price = models.IntegerChoices(max_lenght=5)
-    ticked_side = models.IntegerChoices(max_lenght=4)
-    ticked_stand = models.IntegerChoices(max_lenght=6)
+    price = models.FloatField()
+    ticked_side = models.IntegerField() #max_lenght=4
+    ticked_stand = models.IntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_active = models.DateTimeField()
     date_deactive = models.DateTimeField()
@@ -34,7 +34,7 @@ class Event(models.Model):
 
 
     class Meta:
-        ordering = ['-created', 'name', '-updated']
+        ordering = ['-date_created', 'name' ]
 
     def __str__(self):
         return self.name
