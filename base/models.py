@@ -53,6 +53,6 @@ class Message(models.Model):
         ordering = ['-created', '-updated']
 
     def __str__(self):
-        return self.body[0:50]
+        return self.message[0:50]
 
 

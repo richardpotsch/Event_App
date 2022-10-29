@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<! -- {% load static %} -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/styles/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../static/styles/sliders.css" />
+    <script type="text/javascript" src="../static/js/slider.js"></script>
+    <title>Event</title>
+</head>
+<body>
+ <div id="wrapper">
+     <div id="header">
+          <div id="logo">
+              <a href=""><h1>go to event</h1></a>
+          </div>
+        <div id="search">
+            <form action="{% url 'search' %}" method="get">
+                <div>
+                    <input class="text" name="q" size="32" maxlength="64"/>
+                </div>
+            </form>
+        </div>
+        <div id="menu">
+            {% include 'navbar.html' %}
+        </div>
+    </div>
+    <div id="wraper-slider">
+
+
+        {% include 'slider.html' %}
+    </div>
+    <div id="page">
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <br class="clearfix"/>
+    </div>
+    <br class="clearfix"/>
+</div>
+</body>
+</html>
