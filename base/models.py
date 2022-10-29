@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator
 from django.db import models
 
 # Create your models here.
@@ -23,7 +24,7 @@ class Event(models.Model):
     type_event = models.ForeignKey(Type_event, on_delete = models.PROTECT)
     description = models.TextField(null=True, blank=True)
     place = models.TextField(null=True, blank=True)
-    price = models.FloatField()
+    price = models.DecimalField(validators=[MaxValueValidator(10000)], max_digits=7, decimal_places=2)
     ticked_side = models.IntegerField() #max_lenght=4
     ticked_stand = models.IntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
