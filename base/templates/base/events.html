@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Aktuální akce</h1>
+<ul>
+  {% for event in object_list %}
+    <li>
+        <a href="{% url 'event' event.id %}"><b>{{ event.name }}</b></a><br>
+        [ {{ room.description }} ]
+        <div class="last-child">
+            <a href="event_delete/{{ event.id }}">DELETE</a> I
+            <a href="event_update/{{ event.id }}">EDIT</a>
+        </div>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

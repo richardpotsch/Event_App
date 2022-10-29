@@ -9,25 +9,23 @@
     <title>Event</title>
 </head>
 <body>
- <div id="wrapper">
+<div id="wrapper">
      <div id="header">
           <div id="logo">
               <a href=""><h1>go to event</h1></a>
           </div>
-        <div id="search">
+          <div id="search">
             <form action="{% url 'search' %}" method="get">
                 <div>
                     <input class="text" name="q" size="32" maxlength="64"/>
                 </div>
             </form>
-        </div>
-        <div id="menu">
+          </div>
+          <div id="menu">
             {% include 'navbar.html' %}
-        </div>
+          </div>
     </div>
     <div id="wraper-slider">
-
-
         {% include 'slider.html' %}
     </div>
     <div id="page">
@@ -35,9 +33,7 @@
             {% block content %}
             {% endblock %}
         </div>
-        <br class="clearfix"/>
     </div>
-    <br class="clearfix"/>
 </div>
 </body>
 </html>

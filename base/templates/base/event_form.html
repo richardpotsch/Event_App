@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1></h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+        <div>
+            <label for="{{ form.name.id_for_label }}">Název akce</label><br>
+            {{ form.name }}
+            <strong>{{ form.name.errors }}</strong>
+        </div>
+        <div>
+            <label for="{{ form.description.id_for_label }}">Popis akce</label><br>
+            {{ form.description }}
+            <strong>{{ form.description.errors }}</strong>
+        </div>
+
+        <input type="submit" value="Odeslat">
+</form>
+
+{% endblock %}
