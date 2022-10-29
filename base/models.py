@@ -40,6 +40,20 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+class EventResponse(models.Model):
+    class ResponseTypes(models.TextChoices):
+        YES = 'yes'
+        MAYBE = 'maybe'
+        NOT_INTERESTED = 'not interested'
+    response_date = models.DateTimeField(auto_now_add=True)
+    event_id = models.ForeignKey(Event, on_delete = models.PROTECT)
+    user_id = models.ForeignKey(User, on_delete = models.PROTECT)
+    response_type = models.CharField(max_length=21, choices= ResponseTypes.choices, default=ResponseTypes.YES)
+
+    def __str__(self):
+        result = f"User {self.user_id}, responded {self.response_type} for event_id {self.event_id}."
+        return result
+
 class Message(models.Model):
     Multipleobjects = None
     objects = None
