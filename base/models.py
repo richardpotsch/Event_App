@@ -25,13 +25,13 @@ class Event(models.Model):
     description = models.TextField(null=True, blank=True)
     place = models.TextField(null=True, blank=True)
     price = models.DecimalField(validators=[MaxValueValidator(10000)], max_digits=7, decimal_places=2)
-    ticked_side = models.IntegerField() #max_lenght=4
-    ticked_stand = models.IntegerField()
+    ticked_side = models.IntegerField(blank=True) #max_lenght=4
+    ticked_stand = models.IntegerField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
-    date_active = models.DateTimeField()
-    date_deactive = models.DateTimeField()
+    date_active = models.DateTimeField(blank=True)
+    date_deactive = models.DateTimeField(blank=True)
     date_from = models.DateTimeField()
-    date_to = models.DateTimeField()
+    date_to = models.DateTimeField(blank=True)
 
 
 

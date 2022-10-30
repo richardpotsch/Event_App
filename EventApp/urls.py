@@ -23,4 +23,5 @@ urlpatterns = [
     path('one_event/<pk>', base.views.event_detail, name = 'one_event'),
     path('search/', base.views.event_search, name = 'search'),
     path('response/<pk>', base.views.event_search, name = 'event_response'),
+    path('event_form/', base.views.EventCreateView.as_view(), name = 'event_form'),
 ]
