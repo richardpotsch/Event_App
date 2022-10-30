@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h1>Výsledky hledání pro: {{ query }}</h1>
+<h1>Výsledky hledání pro: {{ q }}</h1>
 <ul>
     {% for event in events %}
     <li>
-        <b><a href="{% url 'event' event.kv %}">Akce {{ event.name }} obsahuje shodu.</b></a><br>
-        [ {{ room.description }} ]
+        <h2><a href="{% url 'one_event' event.id %}">Akce {{ event.name }} obsahuje shodu.</h2></a><br>
+        [ {{ event.description }} ]
     </li>
     {% endfor %}
 </ul>

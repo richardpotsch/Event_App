@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/styles/style.css"/>
 	<link rel="stylesheet" type="text/css" href="../static/styles/sliders.css" />
-    <script type="text/javascript" src="../static/js/slider.js"></script>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}"/>
     <title>Event</title>
 </head>
 <body>
 <div id="wrapper">
      <div id="header">
           <div id="logo">
-              <a href=""><h1>go to event</h1></a>
+              <a href="../"><h1>go to event</h1></a>
           </div>
           <div id="search">
             <form action="{% url 'search' %}" method="get">
@@ -32,6 +32,7 @@
         <div id="content">
             {% block content %}
             {% endblock %}
+            <a class="new_event" href="{% url 'events' %}" title="Vložit novou akci"><div>+</div></a>
         </div>
     </div>
 </div>

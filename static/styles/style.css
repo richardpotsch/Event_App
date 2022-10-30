@@ -4,35 +4,39 @@
 }
 
 a {
-	text-decoration: underline;
-	color: #e8e8e8;
-}
-
-a:hover {
 	text-decoration: none;
 }
 
 body {
 	font-size: 11pt;
 	line-height: 1.6em;
-	font-family: Arial, sans-serif;
+	font-family: "Open Sans";
 	background: #f4f5f5;
-	color: #adadad;
+	color: #5a5a5a;
 }
 #wrapper {
 	position: relative;
 	width: 100%;
 	margin: 0 auto 0 auto;
 }
-.content {
-    margin: auto;
-    width: 1200px;
-    /*text-align: center;*/
+#page {
+	position: relative;
+	padding: 80px 28px 0px 28px;
+	border-top: 0;
+}
+#content {
+	float: left;
+	padding: 0;
+	margin: 20px;
 }
 input {
 	width:100%;
 	height:30px;
-	font-size: 18px;
+	font-size: 1.2em;
+	font-family: "Open Sans Light";
+	padding: 10px;
+	border: 1px solid #eceded;
+	border-radius: 8px;
 }
 button {
 	padding: 10px;
@@ -50,34 +54,23 @@ br.clearfix {
 h1,h2,h3,h4 {
 	text-transform: uppercase;
 	font-weight: normal;
-	color: #f0f0f0;
-}
-
-h2,h3,h4 {
 	margin-bottom: 20px;
-	font-family: Arvo, serif;
-	color: #ffffff;
+	color: #3a3a3a;
 }
-
+h1 {
+	font-size: 2em;
+}
 h2 {
-	font-size: 1.8em;
+	font-size: 1.5em;
 }
 
 h3 {
 	font-size: 1.2em;
 }
 
-img.left {
-	float: left;
-	margin: 8px 20px 20px 0;
-}
-
-img.top {
-	margin: 8px 0 20px 0;
-}
-
 p {
 	margin-bottom: 1.25em;
+	text-align: justify;
 }
 
 ul {
@@ -88,23 +81,8 @@ ul {
 	list-style: none;
 }
 
-.image-list {
-	list-style: none;
-}
 
-.image-list li {
-	clear: both;
-}
 
-.helptext {
-	font-size: 8pt;4
-	font-style: italic;
-}
-
-.last-child
-{
-    float:right;
-}
 
 
 #header {
@@ -114,7 +92,6 @@ ul {
 	display: flex;
 	height: 58px;
 	line-height: 60px;
-	padding: 0 20px 0 20px;
 	width: 100%;
 	margin: 0 0 0 0;
 	background: #000;
@@ -156,7 +133,6 @@ ul {
 	text-transform: uppercase;
 	color: #ffffff;
 	padding: 8px 12px 8px 12px;
-	border: solid 1px #e16060;
 }
 
 #menu ul {
@@ -173,14 +149,14 @@ ul {
 }
 
 #menu ul li.active a {
-	background: #D15050;
-	border: solid 1px #C64545;
+
 }
 
 #menu ul li:hover a {
 	background: #f17070;
 	border: solid 1px #f87777;
 }
+
 #search {
 	top: 0;
 	flex-basis: 0;
@@ -198,6 +174,102 @@ ul {
 	border-radius: 3px;
 	text-align: left;
 }
+#content h1 {
+
+}
+.events, .base_info, order_info, .tab_menu {
+	display: flex;
+	align-items: stretch;
+}
+.events .event:hover {
+	background-color: #dedede;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+
+}
+.events .event, .col-1-3 {
+	order: 5;
+	flex-grow: 1;
+	justify-content: space-between;
+	max-width: 20%;
+	min-width: 300px;
+	/*border: 1px solid #eceded;*/
+	border-top: solid 1px #606060;
+	border-radius: 3px;
+	margin: 20px 20px 20px 0;
+	padding: 8px;
+}
+.events .event a {
+	color: #5a5a5a;
+}
+.events .event a h2 {
+	color: #3a3a3a;
+}
+.events .bottom {
+	justify-content: flex-end;
+}
+
+/*one_event*/
+
+#one_event h1 {
+	font-size: 4em;
+	font-width: 700;
+}
+.type_event {
+	font-weight: 400;
+	margin: 15px 8px;
+}
+.base_info {
+	background-color: darkred;
+	margin: auto;
+	text-align: center;
+	border-radius: 3px;
+}
+.col-1-3 {
+	order: 3 !important;
+	max-width: 33%;
+	font-size: 1.4em;
+	line-height: 1.8;
+	margin-left: 20px;
+	border: 0;
+	text-align: left;
+	color: #fff;
+}
+.tab_menu {
+	margin-top: 20px;
+	width: 66%;
+	border-bottom: 1px solid #3a3a3a;
+}
+.tab {
+	padding: 10px 20px;
+	margin-left: 2px;
+	font-size: 1.4em;
+	border: 1px solid #3a3a3a;
+	border-radius: 3px 3px 0 0;
+	border-bottom: 2px solid #f4f5f5;
+	box-shadow: 0 0 10px rgb(0 0 0 / 0.2);
+}
+#tab_1, #tab_2 {
+	width:66%;
+	float: left;
+}
+#tab_2 {
+	display: none;
+}
+#detail_desription, #chatbox {
+	font-size: 1.2em;
+	line-height: 1.6;
+	margin-top: 20px;
+}
+#chatbox ul li{
+	margin: 5px;
+	padding: 5px 5px;
+	border: 1px solid #eceded;
+}
+#order_events {
+	float: right;
+	max-width: 33%;
+	border: 1px solid #4f5050;
+}
 
 
 .message {
@@ -208,7 +280,6 @@ ul {
 	border-radius: 15px;
   	border: 2px solid black;
 }
-
 .event__message {
   	background: white;
 	border-radius: 15px;
@@ -242,12 +313,6 @@ ul {
 	margin: 0 0 0 336px;
 }
 
-#content {
-	width: 100%;
-	float: left;
-	padding: 0;
-}
-
 #footer {
 	padding: 40px 0 95px 0;
 	text-align: center;
@@ -260,18 +325,8 @@ ul {
 
 
 
-#page {
-	position: relative;
-	padding: 50px 28px 0px 28px;
-	width: 100%;
-	background: rgba(65, 70, 70, 0.1);
-	border-top: 0;
-}
 
-#page ul li {
-	padding: 12px 0 12px 0;
-	border-top: solid 1px #606060;
-}
+
 
 #page ul li.first {
 	padding-top: 0;
@@ -311,6 +366,20 @@ ul {
 	width: 250px;
 	margin: 0 0 0 674px;
 }
-
+.new_event {
+	z-index: 100;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	padding: 15px 20px 20px 15px;
+	font-size: 40px;
+	font-weight: 300;
+	color: #fff;
+	background: #000000;
+	border-radius: 50%;
+	width:20px;
+	height: 20px;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
 
 

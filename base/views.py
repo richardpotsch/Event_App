@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -5,9 +6,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 
 from .models import *
-from .forms import SearchForm
+#from .forms import SearchForm
 from django.shortcuts import render, get_object_or_404
-from .recommender import Recommender
+#from .recommender import Recommender
 # Create your views here.
 
 class ListOfEvents(ListView):
@@ -24,9 +25,9 @@ def event_detail(request, pk):
             event=event,
             message=request.POST.get('message')
         )
-        return redirect('room', pk=event.id)
+        return redirect('one_event', pk=event.id)
     # GET
-    context = {'event': event}
+    context = {'event': event, 'messages': messages}
     return render(request, 'base/one_event.html', context)
 
 

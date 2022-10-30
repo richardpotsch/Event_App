@@ -19,7 +19,7 @@ import base.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('events/', base.views.ListOfEvents.as_view(), name='events'),
-    path('one_event/', base.views.event_detail, name = 'one_event'),
+    path('', base.views.ListOfEvents.as_view(), name='events'),
+    path('one_event/<pk>', base.views.event_detail, name = 'one_event'),
     path('search/', base.views.event_search, name = 'search'),
 ]

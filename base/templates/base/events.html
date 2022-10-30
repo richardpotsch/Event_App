@@ -2,15 +2,20 @@
 
 {% block content %}
 <h1>Aktuální akce</h1>
-<ul>
-  {% for event in object_list %}
-    <li>
-        <a href="{% url 'event' event.id %}"><b>{{ event.name }}</b></a><br>
-        [ {{ room.description }} ]
-        <div class="last-child">
-            <a href="event_delete/{{ event.id }}">DELETE</a> I
-            <a href="event_update/{{ event.id }}">EDIT</a>
+<ul class="events">
+  {% for events in object_list %}
+    <li class="event">
+        <a href="{% url 'one_event' events.id %}">
+        <div class="event_top">
+            <h2>{{ events.name }}</h2>
+            <h3>{{ events.date_from }}</h3>
+            <p>{{ events.description }}</p>
         </div>
+        <div class="event_bottom">
+            <a href="event_delete/{{ events.id }}">DELETE</a> I
+            <a href="event_update/{{ events.id }}">EDIT</a>
+        </div>
+        </a>
     </li>
   {% endfor %}
 </ul>

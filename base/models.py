@@ -39,7 +39,6 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
-
 class EventResponse(models.Model):
     class ResponseTypes(models.TextChoices):
         YES = 'yes'
