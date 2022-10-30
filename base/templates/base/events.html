@@ -15,8 +15,10 @@
             <a href="event_delete/{{ events.id }}">DELETE</a> I
             <a href="event_update/{{ events.id }}">EDIT</a>
         </div>
-        <div class="event_bottom">
-            <a href="{% url "event_response" events.id %}?response=yes">+</a> I
+        <div class="event_response">
+            <a class="event_response_yes" href="{% url "event_response" events.id %}?response=yes"><div>+</div></a>
+            <a class="event_response_no" href="{% url "event_response" events.id %}?response=no"><div>-</div></a>
+            <a class="event_response_maybe" href="{% url "event_response" events.id %}?response=maybe"><div>*</div></a>
         </div>
         </a>
     </li>

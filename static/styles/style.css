@@ -207,6 +207,34 @@ ul {
 .events .bottom {
 	justify-content: flex-end;
 }
+.event_response {
+	display: flex;
+	justify-content: flex-end;
+}
+.event_response_yes, .event_response_no, .event_response_maybe {
+	order: 3;
+	bottom: 30px;
+	right: 30px;
+	padding:  10px 10px 10px;
+	font-size: 32px;
+	font-weight: 400;
+	color: #fff !important;
+	border-radius: 50%;
+	width:20px;
+	height: 20px;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.event_response_yes {
+	background: darkgreen;
+}
+.event_response_no {
+	background: darkred;
+}
+.event_response_maybe {
+	background: darkcyan;
+}
+
 
 /*one_event*/
 
@@ -360,7 +388,7 @@ ul {
 	width: 250px;
 	margin: 0 0 0 674px;
 }
-.new_event {
+.new_event_button {
 	z-index: 100;
 	position: fixed;
 	bottom: 30px;
