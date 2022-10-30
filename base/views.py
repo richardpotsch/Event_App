@@ -5,14 +5,16 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 
 from .models import *
-from .forms import SearchForm
+#from .forms import SearchForm
 from django.shortcuts import render, get_object_or_404
-from .recommender import Recommender
+#from .recommender import Recommender
 # Create your views here.
 
 class ListOfEvents(ListView):
     template_name = 'base/events.html'
     model = Event
+
+
 
 def event_detail(request, pk):
     event = Event.objects.get(id=pk)
@@ -26,7 +28,7 @@ def event_detail(request, pk):
         )
         return redirect('room', pk=event.id)
     # GET
-    context = {'event': event}
+    context = {'event': event, 'messages': messages}
     return render(request, 'base/one_event.html', context)
 
 
