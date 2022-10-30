@@ -15,6 +15,8 @@ class ListOfEvents(ListView):
     template_name = 'base/events.html'
     model = Event
 
+
+
 def event_detail(request, pk):
     event = Event.objects.get(id=pk)
     messages = event.message_set.all()
