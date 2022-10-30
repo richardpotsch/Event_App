@@ -35,12 +35,23 @@ def event_detail(request, pk):
 
 
 def event_search(request):
-    q = request.GET.get('q', '')
-    if q == "":
+    q = request.GET.get('q')
+    c = request.GET.get('c')
+
+    if not q and not c:
         return HttpResponse("empty q")
-    events = Event.objects.filter(
-        Q(description__contains=q) |
-        Q(name__contains=q))
+    query_text = None
+    if q:
+        events = Event.objects.filter(
+            Q(description__contains=q) |
+            Q(name__contains=q))
+
+
+    elif c:
+        events = Event.objects.filter(type_event_id = c)
+        event_type = Type_event.objects.get(id = c)
+        q = event_type.name
+
     context = {'q': q, 'events': events}
     return render(request, "base/search.html", context)
 
@@ -52,7 +63,7 @@ def make_event_response(request):
         # creates new record in db:
         EventResponse.objects.create(
             response_type = response,
-            user_id_id = request.user,
-            event_id_id= event_id
+            user_id = request.user,
+            event_id= event_id
         )
-        return redirect('one event', pk=event_id)
+        return redirect('one_event', pk=event_id)

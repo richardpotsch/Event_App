@@ -48,8 +48,8 @@ class EventResponse(models.Model):
         MAYBE = 'maybe'
         NOT_INTERESTED = 'not interested'
     response_date = models.DateTimeField(auto_now_add=True)
-    event_id = models.ForeignKey(Event, on_delete = models.PROTECT)
-    user_id = models.ForeignKey(User, on_delete = models.PROTECT)
+    event = models.ForeignKey(Event, on_delete = models.PROTECT)
+    user = models.ForeignKey(User, on_delete = models.PROTECT)
     response_type = models.CharField(max_length=21, choices= ResponseTypes.choices, default=ResponseTypes.YES)
 
     def __str__(self):
