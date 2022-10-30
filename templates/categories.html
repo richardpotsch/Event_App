@@ -1,0 +1,11 @@
+<ul class="categories">
+  {% for categories in object_list %}
+    <li class="categorie">
+        <a href="{% url 'search' %}?c={{ categories.id }}">
+        <div class="">
+            <H3>{{ categories.name }}</H3>
+        </div>
+        </a>
+    </li>
+  {% endfor %}
+</ul>

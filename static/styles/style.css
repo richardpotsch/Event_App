@@ -177,7 +177,7 @@ ul {
 #content h1 {
 
 }
-.events, .base_info, order_info, .tab_menu {
+.events, .base_info, order_info, .tab_menu, .categories {
 	display: flex;
 	align-items: stretch;
 }
@@ -296,22 +296,16 @@ ul {
 	width: 100%;
 }
 
-.box {
+.categories {
 	overflow: hidden;
 	margin: 0 0 30px 0;
 }
+.categorie {
+	order: 5;
+	flex-grow: 1;
+	justify-content: space-between;
 
-#box-left {
-	width: 312px;
-	overflow: hidden;
-	float: left;
-}
 
-#box-right {
-	width: 312px;
-	overflow: hidden;
-	margin: 0 0 0 336px;
-}
 
 #footer {
 	padding: 40px 0 95px 0;

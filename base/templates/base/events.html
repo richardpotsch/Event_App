@@ -15,6 +15,9 @@
             <a href="event_delete/{{ events.id }}">DELETE</a> I
             <a href="event_update/{{ events.id }}">EDIT</a>
         </div>
+        <div class="event_bottom">
+            <a href="{% url "event_response" events.id %}?response=yes">+</a> I
+        </div>
         </a>
     </li>
   {% endfor %}

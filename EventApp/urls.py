@@ -22,4 +22,5 @@ urlpatterns = [
     path('', base.views.ListOfEvents.as_view(), name='events'),
     path('one_event/<pk>', base.views.event_detail, name = 'one_event'),
     path('search/', base.views.event_search, name = 'search'),
+    path('response/<pk>', base.views.event_search, name = 'event_response'),
 ]
