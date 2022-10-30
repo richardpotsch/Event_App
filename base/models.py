@@ -34,11 +34,14 @@ class Event(models.Model):
     date_to = models.DateTimeField()
 
 
+
     class Meta:
         ordering = ['-date_created', 'name' ]
 
     def __str__(self):
-        return self.name
+        result = f"{self.name} - {self.description[0:50]}"
+        return result
+
 class EventResponse(models.Model):
     class ResponseTypes(models.TextChoices):
         YES = 'yes'
