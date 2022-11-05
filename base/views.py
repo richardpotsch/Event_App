@@ -43,7 +43,7 @@ def event_detail(request, pk):
             event=event,
             message=request.POST.get('message')
         )
-        return redirect('one event', pk=event.id)
+        return redirect('one_event', pk=event.id)
     # GET
     context = {'event': event, 'messages': messages, 'latest_response': latest_response}
     return render(request, 'base/one_event.html', context)
