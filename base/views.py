@@ -84,6 +84,9 @@ def make_event_response(request):
         )
         return redirect('one_event', pk=event_id)
 
+    if request.method == 'GET':
+        return HttpResponse(response)
+
 class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
     template_name = 'base/event_form.html'
     form_class = EventForm

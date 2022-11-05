@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 
-from base.models import Event, Type_event
+from base.models import Event, Type_event, Message
 
 
 class EventForm(ModelForm):
@@ -17,3 +17,8 @@ class EventForm(ModelForm):
         fields = '__all__'
         #exclude = [''] # fields you want to exclude from form as list
 
+class MessageForm(ModelForm):
+    class Meta:
+        model = Message
+        fields = '__all__'
+        #exclude = [''] # fields you want to exclude from form as list
