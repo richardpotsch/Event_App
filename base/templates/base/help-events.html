@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<ul class="event_type">
+  {% for type_event in type_evets %}
+    <li class="type_event">
+        <a href="{% url 'events' %}?event_type={{ type_event.id }}">
+        <div class="type_top">
+            <h2>{{ type_event.name }}</h2>
+        </div>
+        </a>
+    </li>
+</ul>
+<h1>Aktuální akce</h1>
+<ul class="events">
+  {% for events in object_list %}
+    <li class="event">
+        <a href="{% url 'one_event' events.id %}">
+        <div class="event_top">
+            <h2>{{ events.name }}</h2>
+            <h3>{{ event.date_from|date:'H:i d-m-y' }}</h3>
+            <p>{{ events.description }}</p>
+        </div>
+        <div class="event_bottom">
+            <a href="event_delete/{{ events.id }}">DELETE</a> I
+            <a href="event_update/{{ events.id }}">EDIT</a>
+        </div>
+        <div class="event_response">
+            {% if response == 'yes' %}
+            <a class="event_response_no" href="{% url "response" events.id %}?response=no"></a>
+            {% elif response == 'no' %}
+            <a class="event_response_yes" href="{% url "response" events.id %}?response=yes"></a>
+            <a class="event_response_maybe" href="{% url "response" events.id %}?response=maybe"></a>
+            {% elif response == 'maybe' %}
+            <a class="event_response_no" href="{% url "response" events.id %}?response=no"></a>
+            <a class="event_response_yes" href="{% url "response" events.id %}?response=yes"></a>
+            <a class="event_response_maybe_yes" href="{% url "response" events.id %}?response=maybe"></a>
+            {% else %}
+            <a class="event_response_no" href="{% url "response" events.id %}?response=no"></a>
+            <a class="event_response_yes" href="{% url "response" events.id %}?response=yes"></a>
+            <a class="event_response_maybe_yes" href="{% url "response" events.id %}?response=maybe"></a>
+            {% endif %}
+        </div>
+        </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

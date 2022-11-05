@@ -3,61 +3,90 @@
 {% block content %}
 
 <h1></h1>
+<div id="form_box">
 <form action="" method="post">
     {% csrf_token %}
     {{ form.non_field_errors }}
-        <div>
-            <label for="{{ form.name.id_for_label }}">Název akce</label>
+        <div class="form_item">
+            <label for="{{ form.name.id_for_label }}">Název akce</label><br>
             {{ form.name }}
             <strong>{{ form.name.errors }}</strong>
         </div>
-        <div>
-            <label for="{{ form.active.id_for_label }}">Aktivovat</label>
+
+        <div class="form_item">
+            <label for="{{ form.active.id_for_label }}">Aktivovat</label><br>
             {{ form.active }}
         </div>
-        <div>
-            <label for="{{ form.type_event.id_for_label }}">Druh akce</label>
+
+        <div class="form_item">
+            <label for="{{ form.type_event.id_for_label }}">Druh akce</label><br>
             {{ form.type_event }}
             <strong>{{ form.type_event.errors }}</strong>
         </div>
-         <div>
-            <label for="{{ form.description.id_for_label }}">Popis akce</label>
+
+        <div class="form_item">
+            <label for="{{ form.description.id_for_label }}">Popis akce</label><br>
             {{ form.description }}
             <strong>{{ form.description.errors }}</strong>
         </div>
-        <div>
-            <label for="{{ form.place.id_for_label }}">Místo konání</label>
+
+        <div class="form_item">
+            <label for="{{ form.place.id_for_label }}">Místo konání</label><br>
             {{ form.place }}
             <strong>{{ form.place.errors }}</strong>
         </div>
-        <div>
-            <label for="{{ form.price.id_for_label }}">Místo konání</label>
-            {{ form.price }}
-            <strong>{{ form.price.errors }}</strong>
-        </div>
-        <div>
-            <label for="{{ form.ticked_side.id_for_label }}">Místo konání</label>
-            {{ form.ticked_side }}
-        </div>
-        <div>
-            <label for="{{ form.ticked_stand.id_for_label }}">Místo konání</label>
-            {{ form.ticked_stand }}
-            <strong>{{ form.ticked_stand.errors }}</strong>
-        </div>
-        <div>
-            <label for="{{ form.price.id_for_label }}">Místo konání</label>
-            {{ form.price }}
-            <strong>{{ form.price.errors }}</strong>
-        </div>
-        <div>
-            <label for="{{ form.price.id_for_label }}">Místo konání</label>
-            {{ form.price }}
-            <strong>{{ form.price.errors }}</strong>
+
+        <div class="form_item">
+            <div class="form_item_small">
+                <label for="{{ form.price.id_for_label }}">Cena</label><br>
+                {{ form.price }}
+                <strong>{{ form.price.errors }}</strong>
+            </div>
         </div>
 
+        <div class="form_item">
+            <div class="form_item_small">
+                <label for="{{ form.ticked_side.id_for_label }}">Počet míst k sezení</label><br>
+                {{ form.ticked_side }}
+            </div>
+            <div class="form_item_small">
+                <label for="{{ form.ticked_stand.id_for_label }}">Počet míst k stání</label><br>
+                {{ form.ticked_stand }}
+            </div>
+        </div>
 
+        <div class="form_item">
+            <div class="form_item_small">
+                <label for="{{ form.date_active.id_for_label }}">Zobrazit akci</label><br>
+                {{ form.date_active }}
+                <strong>{{ form.date_active.errors }}</strong>
+            </div>
 
-        <input type="submit" value="Odeslat">
+            <div class="form_item_small">
+                <label for="{{ form.date_deactive.id_for_label }}">Skrýt akci</label><br>
+                {{ form.date_deactive }}
+                <strong>{{ form.date_deactive.errors }}</strong>
+            </div>
+        </div>
+
+        <div class="form_item">
+            <div class="form_item_small">
+                <label for="{{ form.date_deactive.id_for_label }}">Začátek konání akce</label><br>
+                {{ form.date_deactive }}
+                <strong>{{ form.date_deactive.errors }}</strong>
+            </div>
+            <div class="form_item_small">
+                <label for="{{ form.date_deactive.id_for_label }}">Začátek konání akce</label><br>
+                {{ form.date_deactive }}
+                <strong>{{ form.date_deactive.errors }}</strong>
+            </div>
+        </div>
+
+        <div class="form_item">
+                <input type="submit" value="Odeslat">
+        </div>
+
 </form>
+</div>
 
 {% endblock %}

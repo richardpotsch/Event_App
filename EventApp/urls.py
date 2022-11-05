@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', base.views.ListOfEvents.as_view(), name='events'),
     path('one_event/<pk>', base.views.event_detail, name = 'one_event'),
+    path('event_update/<pk>', base.views.EventUpdateView.as_view(), name='event_update'),
+    path('event_delete/<pk>', base.views.EventDeleteView.as_view(), name='event_delete'),
     path('search/', base.views.event_search, name = 'search'),
     path('response/<pk>', base.views.make_event_response, name = 'response'),
     path('event_form/', base.views.EventCreateView.as_view(), name = 'event_form'),
