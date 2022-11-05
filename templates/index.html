@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../static/styles/sliders.css" />
     <link rel="stylesheet" href="{% static '/styles/style.css' %}"/>
+
     <title>Event</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
             {% block content %}
             {% endblock %}
         </div>
-        <a class="new_event_button" href="{% url 'event_form' %}" title="Vložit novou akci"><div>+</div></a>
+        <a href="{% url 'event_form' %}" title="Vložit novou akci"><div id="new_event_button">+</div></a>
     </div>
 </div>
 </body>

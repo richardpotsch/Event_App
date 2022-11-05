@@ -210,29 +210,30 @@ ul {
 .event_response {
 	display: flex;
 	justify-content: flex-end;
+	align-items: baseline;
 }
 .event_response_yes, .event_response_no, .event_response_maybe {
 	order: 3;
-	bottom: 30px;
-	right: 30px;
-	padding:  10px 10px 10px;
 	font-size: 32px;
 	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
 	color: #fff !important;
-	border-radius: 50%;
-	width:20px;
-	height: 20px;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	height: 45px;
+	width: 45px;
 }
 
 .event_response_yes {
-	background: darkgreen;
+	background: url("../media/respone_yes.png") no-repeat left top;
+
+
 }
 .event_response_no {
-	background: darkred;
+	background: url("../media/respone_no.png") no-repeat left top;
 }
 .event_response_maybe {
-	background: darkcyan;
+	background: url("../media/respone_maybe.png") no-repeat left top;
+
 }
 
 
@@ -332,7 +333,22 @@ ul {
 	order: 5;
 	flex-grow: 1;
 	justify-content: space-between;
-
+}
+#new_event_button {
+	z-index: 100;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	padding: 15px 20px 20px 15px;
+	font-size: 40px;
+	font-weight: 300;
+	color: #fff;
+	background: #000000;
+	border-radius: 50%;
+	width:20px;
+	height: 20px;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
 
 
 #footer {
@@ -387,21 +403,6 @@ ul {
 #page-bottom-sidebar {
 	width: 250px;
 	margin: 0 0 0 674px;
-}
-.new_event_button {
-	z-index: 100;
-	position: fixed;
-	bottom: 30px;
-	right: 30px;
-	padding: 15px 20px 20px 15px;
-	font-size: 40px;
-	font-weight: 300;
-	color: #fff;
-	background: #000000;
-	border-radius: 50%;
-	width:20px;
-	height: 20px;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 
