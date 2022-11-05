@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator
 from django.db import models
+from django.db.models import Q
 
 # Create your models here.
 
@@ -28,12 +29,11 @@ class Event(models.Model):
     ticked_side = models.IntegerField(blank=True) #max_lenght=4
     ticked_stand = models.IntegerField(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
-    date_active = models.DateTimeField(blank=True)
-    date_deactive = models.DateTimeField(blank=True)
+    date_active = models.DateField(blank=True)
+    date_deactive = models.DateField(blank=True)
     date_from = models.DateTimeField()
     date_to = models.DateTimeField(blank=True)
-
-
+    #date= models.DateField(blank=True)
 
     class Meta:
         ordering = ['-date_created', 'name' ]
@@ -41,6 +41,10 @@ class Event(models.Model):
     def __str__(self):
         result = f"{self.name} - {self.description[0:50]}"
         return result
+
+    # Event.recommended_events
+    def recommended_events(self):
+        return Event.objects.filter((Q(type_event = self.type_event) ) & ~Q(id = self.id))
 
 class EventResponse(models.Model):
     class ResponseTypes(models.TextChoices):
