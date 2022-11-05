@@ -22,3 +22,8 @@ class MessageForm(ModelForm):
         model = Message
         fields = '__all__'
         #exclude = [''] # fields you want to exclude from form as list
+
+class SearchEventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = '__all__'

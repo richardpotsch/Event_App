@@ -71,7 +71,7 @@ def event_search(request):
     return render(request, "base/search.html", context)
 
 #@login_required
-def make_event_response(request):
+def make_event_response(request, pk):
     event_id = request.GET.get('event_id')
     response = request.GET.get('response') # 'yes' / 'maybe' / 'not'
 
@@ -92,5 +92,20 @@ class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
     form_class = EventForm
     success_url = reverse_lazy('events')
 
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+class EventUpdateView(UpdateView):
+    template_name = 'base/event_form.html'
+    form_class = EventForm
+    success_url = reverse_lazy('events')
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+class EventDeleteView(DeleteView):
+    template_name = 'base/event_delete.html'
+    form_class = EventForm
+    success_url = reverse_lazy('events')
     def form_invalid(self, form):
         return super().form_invalid(form)
