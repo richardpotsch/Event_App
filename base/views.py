@@ -72,7 +72,6 @@ def event_search(request):
 
 #@login_required
 def make_event_response(request, pk):
-    event_id = request.GET.get('event_id')
     response = request.GET.get('response') # 'yes' / 'maybe' / 'not'
 
     if request.method == 'POST':
@@ -80,9 +79,9 @@ def make_event_response(request, pk):
         EventResponse.objects.create(
             response_type = response,
             user_id = request.user,
-            event_id= event_id
+            event_id= pk
         )
-        return redirect('one_event', pk=event_id)
+        return redirect('one_event', pk=pk)
 
     if request.method == 'GET':
         return HttpResponse(response)
