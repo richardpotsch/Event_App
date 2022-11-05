@@ -73,18 +73,15 @@ def event_search(request):
 #@login_required
 def make_event_response(request, pk):
     response = request.GET.get('response') # 'yes' / 'maybe' / 'not'
+    # creates new record in db:
+    EventResponse.objects.create(
+        response_type = response,
+        user_id = request.user,
+        event_id= pk
+    )
+    return redirect('one_event', pk=pk)
 
-    if request.method == 'POST':
-        # creates new record in db:
-        EventResponse.objects.create(
-            response_type = response,
-            user_id = request.user,
-            event_id= pk
-        )
-        return redirect('one_event', pk=pk)
 
-    if request.method == 'GET':
-        return HttpResponse(response)
 
 class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
     template_name = 'base/event_form.html'
@@ -104,6 +101,20 @@ class EventUpdateView(UpdateView):
 
 class EventDeleteView(DeleteView):
     template_name = 'base/event_delete.html'
+    form_class = EventForm
+    success_url = reverse_lazy('events')
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+class MessageUpdateView(UpdateView):
+    template_name = 'base/message_update.html'
+    form_class = EventForm
+    success_url = reverse_lazy('events')
+    def form_invalid(self, form):
+        return super().form_invalid(form)
+
+class MessageDeleteView(DeleteView):
+    template_name = 'base/message_delete.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
     def form_invalid(self, form):

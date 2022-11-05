@@ -8,8 +8,7 @@ class EventForm(ModelForm):
     def clean_name(self):
         name = self.cleaned_data['name']
         if len(name) < 4:
-            validation_error = ValidationError("Jméno je moc krátké.")
-            raise validation_error
+            raise ValidationError("Jméno je moc krátké.")
         return name
 
     class Meta:
@@ -23,7 +22,6 @@ class MessageForm(ModelForm):
         fields = '__all__'
         #exclude = [''] # fields you want to exclude from form as list
 
-class SearchEventForm(ModelForm):
-    class Meta:
-        model = Event
-        fields = '__all__'
+
+
+
