@@ -16,9 +16,9 @@
             <a href="event_update/{{ events.id }}">EDIT</a>
         </div>
         <div class="event_response">
-            <a class="event_response_yes" href="{% url "event_response" events.id %}?response=yes"></a>
-            <a class="event_response_no" href="{% url "event_response" events.id %}?response=no"></a>
-            <a class="event_response_maybe" href="{% url "event_response" events.id %}?response=maybe"></a>
+            <a class="event_response_yes" href="{% url "response" events.id %}?response=yes"></a>
+            <a class="event_response_no" href="{% url "response" events.id %}?response=no"></a>
+            <a class="event_response_maybe" href="{% url "response" events.id %}?response=maybe"></a>
         </div>
         </a>
     </li>
