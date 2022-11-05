@@ -7,15 +7,55 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
         <div>
-            <label for="{{ form.name.id_for_label }}">Název akce</label><br>
+            <label for="{{ form.name.id_for_label }}">Název akce</label>
             {{ form.name }}
             <strong>{{ form.name.errors }}</strong>
         </div>
         <div>
-            <label for="{{ form.description.id_for_label }}">Popis akce</label><br>
+            <label for="{{ form.active.id_for_label }}">Aktivovat</label>
+            {{ form.active }}
+        </div>
+        <div>
+            <label for="{{ form.type_event.id_for_label }}">Druh akce</label>
+            {{ form.type_event }}
+            <strong>{{ form.type_event.errors }}</strong>
+        </div>
+         <div>
+            <label for="{{ form.description.id_for_label }}">Popis akce</label>
             {{ form.description }}
             <strong>{{ form.description.errors }}</strong>
         </div>
+        <div>
+            <label for="{{ form.place.id_for_label }}">Místo konání</label>
+            {{ form.place }}
+            <strong>{{ form.place.errors }}</strong>
+        </div>
+        <div>
+            <label for="{{ form.price.id_for_label }}">Místo konání</label>
+            {{ form.price }}
+            <strong>{{ form.price.errors }}</strong>
+        </div>
+        <div>
+            <label for="{{ form.ticked_side.id_for_label }}">Místo konání</label>
+            {{ form.ticked_side }}
+        </div>
+        <div>
+            <label for="{{ form.ticked_stand.id_for_label }}">Místo konání</label>
+            {{ form.ticked_stand }}
+            <strong>{{ form.ticked_stand.errors }}</strong>
+        </div>
+        <div>
+            <label for="{{ form.price.id_for_label }}">Místo konání</label>
+            {{ form.price }}
+            <strong>{{ form.price.errors }}</strong>
+        </div>
+        <div>
+            <label for="{{ form.price.id_for_label }}">Místo konání</label>
+            {{ form.price }}
+            <strong>{{ form.price.errors }}</strong>
+        </div>
+
+
 
         <input type="submit" value="Odeslat">
 </form>
