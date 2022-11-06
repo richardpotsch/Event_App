@@ -57,8 +57,7 @@ class EventResponse(models.Model):
     response_type = models.CharField(max_length=21, choices= ResponseTypes.choices, default=ResponseTypes.YES)
 
     def __str__(self):
-        result = f"User {self.user_id}, responded {self.response_type} for event_id {self.event_id}."
-        return result
+        return self.response_type.upper()
 
 class Message(models.Model):
     Multipleobjects = None
