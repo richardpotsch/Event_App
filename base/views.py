@@ -22,9 +22,6 @@ class ListOfEvents(ListView):
     template_name = 'base/events.html'
     model = Event
 
-    #ToDo -potřebujeme vracet i response
-
-
 
 def event_detail(request, pk):
     event = Event.objects.get(id=pk)
@@ -82,6 +79,7 @@ def make_event_response(request, pk):
     return redirect('one_event', pk=pk)
 
 class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
+    model = Event
     template_name = 'base/event_form.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
@@ -90,6 +88,7 @@ class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
         return super().form_invalid(form)
 
 class EventUpdateView(UpdateView):
+    model = Event
     template_name = 'base/event_form.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
@@ -99,6 +98,7 @@ class EventUpdateView(UpdateView):
         return super().form_invalid(form)
 
 class EventDeleteView(DeleteView):
+    model = Event
     template_name = 'base/event_delete.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
@@ -106,6 +106,7 @@ class EventDeleteView(DeleteView):
         return super().form_invalid(form)
 
 class MessageUpdateView(UpdateView):
+    model = Message
     template_name = 'base/message_update.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
@@ -113,6 +114,7 @@ class MessageUpdateView(UpdateView):
         return super().form_invalid(form)
 
 class MessageDeleteView(DeleteView):
+    model = Message
     template_name = 'base/message_delete.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
