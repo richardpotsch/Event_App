@@ -88,8 +88,8 @@ class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
         return super().form_invalid(form)
 
 class EventUpdateView(UpdateView):
-    model = Event
     template_name = 'base/event_form.html'
+    model = Event
     form_class = EventForm
     success_url = reverse_lazy('events')
 
