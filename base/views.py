@@ -6,7 +6,7 @@ from django.forms import ModelForm
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-
+import logging
 from .models import Event, EventResponse, Message, Type_event
 from django.views.generic import ListView, FormView, CreateView, UpdateView, DeleteView
 from datetime import date
@@ -15,7 +15,7 @@ from base.forms import EventForm
 from .models import *
 #from .forms import SearchForm
 from django.shortcuts import render, get_object_or_404
-#from .recommender import Recommender
+logging.basicConfig(filename='log.txt', encoding='utf-8', level=logging.INFO, format='%(asctime)s %(message)s')
 # Create your views here.
 
 class ListOfEvents(ListView):
@@ -73,15 +73,13 @@ def event_search(request):
 #@login_required
 def make_event_response(request, pk):
     response = request.GET.get('response') # 'yes' / 'maybe' / 'not'
-    # creates new record in db:
     EventResponse.objects.create(
         response_type = response,
-        user_id = request.user,
+        user_id = request.user.id,
         event_id= pk
     )
+    logging.info(f"User id {request.user.id} responded {response} to event id {pk}.")
     return redirect('one_event', pk=pk)
-
-
 
 class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
     template_name = 'base/event_form.html'
@@ -95,6 +93,7 @@ class EventUpdateView(UpdateView):
     template_name = 'base/event_form.html'
     form_class = EventForm
     success_url = reverse_lazy('events')
+
 
     def form_invalid(self, form):
         return super().form_invalid(form)
