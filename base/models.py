@@ -31,8 +31,8 @@ class Event(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_active = models.DateField(blank=True)
     date_deactive = models.DateField(blank=True)
-    date_from = models.DateField()
-    date_to = models.DateField(blank=True)
+    date_from = models.DateTimeField()
+    date_to = models.DateTimeField(blank=True)
     #date= models.DateField(blank=True)
 
     class Meta:
