@@ -6,7 +6,7 @@
     <li class="type_event">
         <a href="{% url 'search' %}?c={{ type_event.id }}">
         <div class="type_top">
-            <h2>{{ type_event.name }}</h2>
+            {{ type_event.name }}
         </div>
         </a>
     </li>
@@ -20,7 +20,7 @@
         <div class="event_top">
             <h2>{{ events.name }}</h2>
             <h3>{{ events.date_from|date:'d.m.Y - H:i' }}</h3>
-            <p>{{ events.description }}</p>
+            <p>{{ events.description|truncatechars:255 }}</p>
         </div>
         {% if request.user.is_staff %}
         <div class="event_bottom">

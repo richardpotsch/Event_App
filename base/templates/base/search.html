@@ -6,11 +6,14 @@
 {% else %}
     <h1>Výsledky hledání pro: {{ q }}</h1>
 {% endif %}
+<br>
 <ul>
     {% for event in events %}
     <li>
-        <h2><a href="{% url 'one_event' event.id %}">Akce {{ event.name }} obsahuje shodu.</h2></a>
-        <p>{{ event.description }}</p>
+        <a href="{% url 'one_event' event.id %}">
+            <h2><b>{{ event.name }}</b> - {{ event.date_from|date:'d.m.Y - H:i' }}</h2>
+            <p>{{ event.description }}</p>
+        </a>
         <hr>
     </li>
     {% endfor %}

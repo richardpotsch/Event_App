@@ -22,23 +22,32 @@
         <div class="col-1-3"></div>
         <div class="col-1-3">
             {% if request.user.is_authenticated %}
-            <div class="event_response">
-            {{ latest_response }}
             {% if latest_response.response_type == 'yes' %}
+            <i>Seš přihlášen.</i><br>
+            <div class="event_response">
             <a class="event_response_no" href="{% url "response" event.id %}?response=no"></a>
             <a class="event_response_maybe" href="{% url "response" event.id %}?response=maybe"></a>
-            {% elif latest_response.response_type == 'no' %}
-            <a class="event_response_yes" href="{% url "response" event.id %}?response=yes"></a>
-            <a class="event_response_maybe" href="{% url "response" event.id %}?response=maybe"></a>
-            {% elif latest_response.response_type == 'maybe' %}
-            <a class="event_response_no" href="{% url "response" event.id %}?response=no"></a>
-            <a class="event_response_yes" href="{% url "response" event.id %}?response=yes"></a>
-            {% else %}
-            <a class="event_response_no" href="{% url "response" event.id %}?response=no"></a>
-            <a class="event_response_yes" href="{% url "response" event.id %}?response=yes"></a>
-            <a class="event_response_maybe" href="{% url "response" event.id %}?response=maybe"></a>
-            {% endif %}
             </div>
+            {% elif latest_response.response_type == 'no' %}
+            <i>Nerozmyslíš se?</i><br>
+            <div class="event_response">
+            <a class="event_response_yes" href="{% url "response" event.id %}?response=yes"></a>
+            <a class="event_response_maybe" href="{% url "response" event.id %}?response=maybe"></a>
+            </div>
+            {% elif latest_response.response_type == 'maybe' %}
+            <i>Jak se nakonec rozhodneš?</i><br>
+            <div class="event_response">
+            <a class="event_response_no" href="{% url "response" event.id %}?response=no"></a>
+            <a class="event_response_yes" href="{% url "response" event.id %}?response=yes"></a>
+            </div>
+            {% else %}
+            <i>Jak to vidíš?</i><br>
+            <div class="event_response">
+            <a class="event_response_no" href="{% url "response" event.id %}?response=no"></a>
+            <a class="event_response_yes" href="{% url "response" event.id %}?response=yes"></a>
+            <a class="event_response_maybe" href="{% url "response" event.id %}?response=maybe"></a>
+            </div>
+            {% endif %}
             {% endif %}
 
         </div>
@@ -63,12 +72,16 @@
 
     </div>
 </div>
-<div id="order_events">Podobné akce
+<div id="order_events">
+    <h2>Podobné akce</h2>
 
-{% for event in event.recommended_events %}
-    {{ event.name }}<br>
-    {{ event.date_from|date:'d.m.Y - H:i' }}
-{%  endfor %}
+    {% for event in event.recommended_events %}
+    <a href="{% url 'one_event' event.id %}">
+        <div class="recommend_event">
+            {{ event.name }}<br><br>{{ event.date_from|date:'d.m.Y - H:i' }}
+        </div>
+    </a>
+    {%  endfor %}
 </div>
 </div>
 <script>

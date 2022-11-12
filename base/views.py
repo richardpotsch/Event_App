@@ -32,10 +32,13 @@ def event_detail(request, pk):
     messages = event.message_set.all()
 
     # latest response in database
-    latest_response = EventResponse.objects.filter(
-        user_id=request.user,
-        event_id=event
-    ).order_by('-response_date').first()
+    try:
+        latest_response = EventResponse.objects.filter(
+            user_id=request.user,
+            event_id=event
+        ).order_by('-response_date').first()
+    except:
+        latest_response = None
 
     # POST
     if request.method == 'POST':
@@ -102,12 +105,13 @@ class EventUpdateView(UpdateView):
         return super().form_invalid(form)
 
 class EventDeleteView(DeleteView):
-    model = Event
     template_name = 'base/event_delete.html'
-    form_class = EventForm
+    model = Event
     success_url = reverse_lazy('events')
-    def form_invalid(self, form):
-        return super().form_invalid(form)
+    permission_required = 'base.event_delete'
+
+    # def form_invalid(self, form):
+    #     return super().form_invalid(form)
 
 class MessageUpdateView(UpdateView):
     model = Message
