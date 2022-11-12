@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.forms import ModelForm, DateTimeInput
+from django.forms import ModelForm, DateTimeInput, DateInput
 
 from base.models import Event, Type_event, Message
 
@@ -20,6 +20,8 @@ class EventForm(ModelForm):
         widgets = {
             'date_from': DateTimeInput(attrs={'type': 'datetime-local'}),
             'date_to': DateTimeInput(attrs={'type': 'datetime-local'}),
+            'date_active': DateInput(attrs={'type': 'date'}),
+            'date_deactive': DateInput(attrs={'type': 'date'}),
         }
 
 
