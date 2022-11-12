@@ -66,9 +66,9 @@ def event_search(request):
     elif c:
         events = Event.objects.filter(type_event_id = c)
         event_type = Type_event.objects.get(id = c)
-        q = event_type.name
+        c = event_type.name
 
-    context = {'q': q, 'events': events}
+    context = {'q': q, 'c': c, 'events': events}
     return render(request, "base/search.html", context)
 
 #@login_required
