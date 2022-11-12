@@ -15,7 +15,7 @@ from base.forms import EventForm
 from .models import *
 #from .forms import SearchForm
 from django.shortcuts import render, get_object_or_404
-logging.basicConfig(filename='log.txt', encoding='utf-8', level=logging.INFO, format='%(asctime)s %(message)s')
+#logging.basicConfig(filename='log.txt', encoding='utf-8', level=logging.INFO, format='%(asctime)s %(message)s')
 # Create your views here.
 
 class ListOfEvents(ListView):
@@ -75,7 +75,7 @@ def make_event_response(request, pk):
         user_id = request.user.id,
         event_id= pk
     )
-    logging.info(f"User id {request.user.id} responded {response} to event id {pk}.")
+    #logging.info(f"User id {request.user.id} responded {response} to event id {pk}.")
     return redirect('one_event', pk=pk)
 
 class EventCreateView(CreateView): #LoginRequiredMixin, PermissionRequiredMixin,
