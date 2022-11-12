@@ -1,13 +1,17 @@
 {% extends 'index.html' %}
 
 {% block content %}
-
-<h1>Výsledky hledání pro: {{ q }}</h1>
+{% if q == None %}
+    <h1>V kategorii {{ c }} jsme našli:</h1>
+{% else %}
+    <h1>Výsledky hledání pro: {{ q }}</h1>
+{% endif %}
 <ul>
     {% for event in events %}
     <li>
-        <h2><a href="{% url 'one_event' event.id %}">Akce {{ event.name }} obsahuje shodu.</h2></a><br>
-        [ {{ event.description }} ]
+        <h2><a href="{% url 'one_event' event.id %}">Akce {{ event.name }} obsahuje shodu.</h2></a>
+        <p>{{ event.description }}</p>
+        <hr>
     </li>
     {% endfor %}
 </ul>

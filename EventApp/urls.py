@@ -16,14 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import base.views
+import user.views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', base.views.ListOfEvents.as_view(), name='events'),
-    path('one_event/<pk>', base.views.event_detail, name = 'one_event'),
+    path('one_event/<pk>', base.views.event_detail, name='one_event'),
     path('event_update/<pk>', base.views.EventUpdateView.as_view(), name='event_update'),
     path('event_delete/<pk>', base.views.EventDeleteView.as_view(), name='event_delete'),
-    path('search/', base.views.event_search, name = 'search'),
-    path('response/<pk>', base.views.make_event_response, name = 'response'),
-    path('event_form/', base.views.EventCreateView.as_view(), name = 'event_form'),
+    path('search/', base.views.event_search, name='search'),
+    path('response/<pk>', base.views.make_event_response, name='response'),
+    path('event_form/', base.views.EventCreateView.as_view(), name='event_form'),
+    path('signup/', user.views.SignUpView.as_view(), name='signup'),
+    path('login/', user.views.LoginView.as_view(), name='login'),
+    path('logout/', user.views.LogoutView.as_view(), name='logout'),
 ]

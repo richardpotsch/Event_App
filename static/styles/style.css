@@ -28,7 +28,7 @@ body {
 	float: left;
 	padding: 0;
 	margin: 20px;
-	width: 100%;
+	width: calc(100%-40px);
 }
 input, select, textarea {
 	width: calc(100% - 20px);
@@ -107,7 +107,7 @@ h3 {
 }
 
 p {
-	margin-bottom: 1.25em;
+	margin-bottom: 1em;
 	text-align: justify;
 }
 
@@ -118,7 +118,9 @@ ul {
 ul {
 	list-style: none;
 }
-
+hr {
+	margin-bottom: 1em;
+}
 
 
 
@@ -215,20 +217,44 @@ ul {
 #content h1 {
 
 }
-.events, .base_info, order_info, .tab_menu, .categories {
+.events, .base_info, .order_info, .tab_menu, .categories {
 	display: flex;
 	align-items: stretch;
+	flex-wrap: wrap;
+
 }
-.events .event:hover {
+.type_event {
+	order: 6;
+	flex-grow: 1;
+	align-self: stretch;
+	justify-content: space-between;
+	width: calc(100% / 6 - 56px);
+	font-size: 1.4em;
+	line-height: 1.8;
+	margin: 10px 20px;
+	border: 0;
+	background-color: darkred;
+	text-align: center;
+	color: #fff;
+	height: 0;
+  	padding-bottom: calc(100% / 6 - 36px);
+}
+.type_event h2 {
+	color: #fff;
+}
+.type_top {
+	padding-top: calc(100% / 2 - 1.5em);
+}
+.events .event:hover, .type_event:hover {
 	background-color: #dedede;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 
 }
-.events .event, .col-1-3 {
+.events .event {
 	order: 5;
 	flex-grow: 1;
 	justify-content: space-between;
-	max-width: 20%;
+	width: calc(100% / 5 - 36px);
 	min-width: 300px;
 	/*border: 1px solid #eceded;*/
 	border-top: solid 1px #606060;
@@ -280,8 +306,9 @@ ul {
 #one_event h1 {
 	font-size: 4em;
 	font-width: 700;
+	line-height: 1;
 }
-.type_event {
+.categorie_text {
 	font-weight: 400;
 	margin: 15px 8px;
 }
@@ -292,15 +319,18 @@ ul {
 	border-radius: 3px;
 }
 .col-1-3 {
-	order: 3 !important;
-	max-width: 33%;
+	order: 3;
+	flex-grow: 1;
+	justify-content: space-between;
+	width: calc(100% / 3 - 56px);
 	font-size: 1.4em;
 	line-height: 1.8;
-	margin-left: 20px;
+	margin: 20px;
 	border: 0;
 	text-align: left;
 	color: #fff;
 }
+
 .tab_menu {
 	margin-top: 20px;
 	width: 66%;

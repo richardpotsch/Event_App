@@ -1,28 +1,55 @@
 {% extends 'index.html' %}
-
+{% load event_tags %}  # ROBINE, PŘIDÁNO
 {% block content %}
-
+<ul class="categories">
+  {% for type_event in type_events %}
+    <li class="type_event">
+        <a href="{% url 'search' %}?c={{ type_event.id }}">
+        <div class="type_top">
+            <h2>{{ type_event.name }}</h2>
+        </div>
+        </a>
+    </li>
+  {% endfor %}
+</ul>
 <h1>Aktuální akce</h1>
-<ul class="events">
+<div class="events">
   {% for events in object_list %}
-    <li class="event">
+    <div class="event">
         <a href="{% url 'one_event' events.id %}">
         <div class="event_top">
             <h2>{{ events.name }}</h2>
             <h3>{{ events.date_from|date:'d.m.Y - H:i' }}</h3>
             <p>{{ events.description }}</p>
         </div>
+        {% if request.user.is_staff %}
         <div class="event_bottom">
             <a href="event_delete/{{ events.id }}">DELETE</a> I
             <a href="event_update/{{ events.id }}">EDIT</a>
         </div>
+        {% endif %}
+        {% if request.user.is_authenticated %}
         <div class="event_response">
-            <a class="event_response_yes" href="{% url "response" events.id %}?response=yes"></a>
-            <a class="event_response_no" href="{% url "response" events.id %}?response=no"></a>
-            <a class="event_response_maybe" href="{% url "response" events.id %}?response=maybe"></a>
+            {% get_latest_response events.id user.id as latest_response %}
+            {% if latest_response == 'YES' %}
+            <a class="event_response_no" title="Odhlásit?" href="{% url "response" events.id %}?response=no"></a>
+            <a class="event_response_maybe" title="Možná půjdu" href="{% url "response" events.id %}?response=maybe"></a>
+            {% elif latest_response == 'NO' %}
+            <a class="event_response_yes" title="Přihlásit?" href="{% url "response" events.id %}?response=yes"></a>
+            <a class="event_response_maybe" title="Možná půjdu" href="{% url "response" events.id %}?response=maybe"></a>
+            {% elif latest_response == 'MAYBE' %}
+            <a class="event_response_no" title="Nepůjdu" href="{% url "response" events.id %}?response=no"></a>
+            <a class="event_response_yes" title="Půjdu, přihlásit." href="{% url "response" events.id %}?response=yes"></a>
+            {% else %}
+            <a class="event_response_no" title="Nepůjdu" href="{% url "response" events.id %}?response=no"></a>
+            <a class="event_response_yes" title="Půjdu, přihlásit." href="{% url "response" events.id %}?response=yes"></a>
+            <a class="event_response_maybe" title="Možná půjdu" href="{% url "response" events.id %}?response=maybe"></a>
+            {% endif %}
+
         </div>
+        {% endif %}
         </a>
-    </li>
+    </div>
   {% endfor %}
-</ul>
+</div>
 {% endblock %}

@@ -2,21 +2,14 @@
     <li class="">
         <a href="{% url 'events' %}">Home</a>
     </li>
-{#    <--#}
-{#    {% if perms.base.add_room %}#}
-{#    <li class="">#}
-{#        <a href="{% url '' %}">New room</a>#}
-{#    </li>#}
-{#    {% endif %}#}
-{#    {% if perms.base.add_message %}#}
-{#    <li class="">#}
-{#        <a href="{% url '' %}">New message</a>#}
-{#    </li>#}
-{#    {% endif %}#}
-{#    <li class="last-child">#}
-{#      {{ user.username}}#}
-{##}
-{#        <a href="{% url '' %}">Odhlásit</a>#}
-{#    </li> -->#}
+    <li class="last-child">
+      {% if request.user.is_authenticated %}
+
+      {{ user.username}}
+        <a href="{% url 'logout' %}">Odhlásit</a>
+      {% else %}
+        <a href="{% url 'login' %}">Přihlásit</a>
+      {% endif %}
+    </li> -->
 </ul>
 <br class="clearfix"/>
