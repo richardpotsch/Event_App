@@ -22,6 +22,10 @@ class ListOfEvents(ListView):
     template_name = 'base/events.html'
     model = Event
 
+    def get_context_data(self,  *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context.update({"type_events": Type_event.objects.all()})
+        return context
 
 def event_detail(request, pk):
     event = Event.objects.get(id=pk)
