@@ -19,6 +19,7 @@ class EventForm(ModelForm):
         #exclude = [''] # fields you want to exclude from form as list
         widgets = {
             'date_from': DateTimeInput(attrs={'type': 'datetime-local'}),
+            'date_to': DateTimeInput(attrs={'type': 'datetime-local'}),
         }
 
 
