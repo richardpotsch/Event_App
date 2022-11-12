@@ -1,8 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView, TemplateView
 from django.views.generic.edit import FormMixin
 
@@ -25,4 +26,9 @@ class LoginView(FormMixin, TemplateView):
             return redirect('events')
 
         messages.error(request, 'Wrong credentials')
-        return redirect('auth:login')
+        return redirect('login')
+
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('events')
