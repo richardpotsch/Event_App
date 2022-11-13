@@ -9,6 +9,8 @@
         <a href="{% url 'logout' %}">Odhlásit</a>
       {% else %}
         <a href="{% url 'login' %}">Přihlásit</a>
+     </li><li class="last-child">
+        <a href="{% url 'signup' %}">Registrovat</a>
       {% endif %}
     </li>
 </ul>

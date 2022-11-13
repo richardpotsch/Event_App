@@ -4,7 +4,7 @@
     <div class="categorie_text">Akce v kategorii {{ event.type_event }}</div>
     <h1>{{ event.name }}</h1>
     <div class="base_info">
-        <div class="col-1-3">Začátek:<br>{{ event.date_from }}<br>Konec:<br>{{ event.date_to }}</div>
+        <div class="col-1-3">Začátek:<br>{{ event.date_from|date:'d.m.Y - H:i' }}<br>Konec:<br>{{ event.date_to|date:'d.m.Y - H:i' }}</div>
         <div class="col-1-3">Vstupné:<br>{{ event.price }} Kč</div>
         <div class="col-1-3">Místo:<br>{{ event.place }}</div>
     </div>
@@ -60,6 +60,9 @@
             {% csrf_token %}
         <input name="message" placeholder="Napiš svůj příspěvek">
         </form>
+        {% else %}
+            <h3 style="text-align: center">Přidávat příspěvky mohou pouze registrovaní a přihlášení uživatele. <br>
+                <b><a href="{% url 'login' %}">Přihlásit</a> <br> <a href="{% url 'signup' %}">Registrovat</a></b></h3>
         {% endif %}
         <ul>
             {% for message in messages %}
