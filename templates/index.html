@@ -32,7 +32,7 @@
             {% block content %}
             {% endblock %}
         </div>
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
         <a href="{% url 'event_form' %}" title="Vložit novou akci"><div id="new_event_button">+</div></a>
         {% endif %}
     </div>

@@ -36,7 +36,7 @@ class Event(models.Model):
     #date= models.DateField(blank=True)
 
     class Meta:
-        ordering = ['-date_created', 'name' ]
+        ordering = ['date_from', 'name' ]
 
     def __str__(self):
         result = f"{self.name} - {self.description[0:50]}"
